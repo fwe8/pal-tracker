@@ -9,7 +9,7 @@ import java.net.InetAddress;
 @Component
 public class Env {
     private int port;
-    private int memoryLimit;
+    private String memoryLimit;
     private String cfInstanceIndex;
     private InetAddress cfInstanceAddr;
 
@@ -21,11 +21,11 @@ public class Env {
         this.port = port;
     }
 
-    public int getMemoryLimit() {
+    public String getMemoryLimit() {
         return memoryLimit;
     }
 
-    public void setMemoryLimit(int memoryLimit) {
+    public void setMemoryLimit(String memoryLimit) {
         this.memoryLimit = memoryLimit;
     }
 
