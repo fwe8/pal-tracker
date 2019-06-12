@@ -11,7 +11,7 @@ public class Env {
     private int port;
     private String memoryLimit;
     private String cfInstanceIndex;
-    private InetAddress cfInstanceAddr;
+    private String cfInstanceAddr;
 
     public int getPort() {
         return port;
@@ -37,11 +37,11 @@ public class Env {
         this.cfInstanceIndex = cfInstanceIndex;
     }
 
-    public InetAddress getCfInstanceAddr() {
+    public String getCfInstanceAddr() {
         return cfInstanceAddr;
     }
 
-    public void setCfInstanceAddr(InetAddress cfInstanceAddr) {
+    public void setCfInstanceAddr(String cfInstanceAddr) {
         this.cfInstanceAddr = cfInstanceAddr;
     }
 }
