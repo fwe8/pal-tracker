@@ -3,15 +3,14 @@ package io.pivotal.pal.tracker;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
-    private Map<Long, TimeEntry> data = new HashMap<>();
+    private ConcurrentHashMap<Long, TimeEntry> data = new ConcurrentHashMap<>();
     private AtomicLong nextId = new AtomicLong(1);
 
     @Override
@@ -20,7 +19,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
             throw new IllegalArgumentException("TimeEntry already has an id");
         TimeEntry t = timeEntry.copy();
         t.setId(nextId.getAndIncrement());
-        data.put(t.getId(), t);
+        data.putIfAbsent(t.getId(), t);
         return t;
     }
 
@@ -40,7 +39,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
             return null;
         TimeEntry t = timeEntry.copy();
         t.setId(id);
-        data.put(id, t);
+        data.replace(id, t);
         return t;
     }
 

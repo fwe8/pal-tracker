@@ -3,8 +3,6 @@ package io.pivotal.pal.tracker;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import java.net.InetAddress;
-
 @ConfigurationProperties
 @Component
 public class Env {
