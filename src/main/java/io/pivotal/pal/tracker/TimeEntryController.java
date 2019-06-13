@@ -44,6 +44,12 @@ public class TimeEntryController {
         return new ResponseEntity<>(foundEntry, foundEntry == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
+    @GetMapping("/time-entries/call")
+    public ResponseEntity<TimeEntry> call() {
+        actionCounter.increment();
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
     @GetMapping("/time-entries")
     public ResponseEntity<List<TimeEntry>> list() {
         actionCounter.increment();
